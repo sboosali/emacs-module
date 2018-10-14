@@ -1,12 +1,30 @@
-packages:
-  ../emacs-module.cabal
-  emacs-module-test.cabal
+--------------------------------------------------
 
--- program-options
---   ghc-options: -g3
+packages:
+  ./emacs-module-test.cabal
+
+--------------------------------------------------
+
+optional-packages:
+  ../emacs-module
+
+--------------------------------------------------
+
+debug-info:        True
+library-profiling: False
+
+--------------------------------------------------
 
 constraints:
   emacs-module +assertions +module-assertions
 
-library-profiling: False
-debug-info: True
+--------------------------------------------------
+
+package *
+  extra-lib-dirs:     /home/sboo/.nix-profile/lib/
+  extra-include-dirs: /home/sboo/.nix-profile/include/
+  extra-prog-path:    /home/sboo/.nix-profile/bin/
+
+-- `nix`-installed: headers, shared objects, and executables; UNIX-only.
+
+--------------------------------------------------
